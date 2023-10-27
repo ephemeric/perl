@@ -33,8 +33,9 @@ https://metacpan.org/pod/CPAN::FirstTime
 ./bin/cpan -j ~/localperl/.cpan/CPAN/Config.pm -s
 
 ## Install `mysql_config`
+
+```
 request-tracker :: ~ % sudo apt-cache policy libmysqlclient-dev
-+
 libmysqlclient-dev:
   Installed: 8.0.35-1ubuntu22.04
   Candidate: 8.0.35-1ubuntu22.04
@@ -47,16 +48,20 @@ libmysqlclient-dev:
 Packages
      8.0.28-0ubuntu4 500
         500 http://za.archive.ubuntu.com/ubuntu jammy/main amd64 Packages
+
 request-tracker :: ~ % sudo apt-get install libmysqlclient-dev
-+
 Reading package lists... Done
 Building dependency tree... Done
 Reading state information... Done
 libmysqlclient-dev is already the newest version (8.0.35-1ubuntu22.04).
 0 upgraded, 0 newly installed, 0 to remove and 160 not upgraded.
+```
 
 ## CGI-Emulate-PSGI Fails
 
+Unset `proxy` vars.
+
+```
 t/06_httproxy.t ........ 1/?
 #   Failed test at t/06_httproxy.t line 9.
 # Looks like you failed 1 test of 2.
@@ -78,3 +83,8 @@ make[1]: Leaving directory '/home/robertg/.cpan/build/CGI-Emulate-PSGI-0.23-10'
   /usr/bin/make test -- NOT OK
 //hint// to see the cpan-testers results for installing this module, try:
   reports TOKUHIROM/CGI-Emulate-PSGI-0.23.tar.gz
+```
+
+## RT
+
+RT_FIX_DEPS_CMD="SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt /home/robertg/localperl/bin/cpan -j /home/robertg/.cpan/CPAN/MyConfig.pm" make fixdeps
